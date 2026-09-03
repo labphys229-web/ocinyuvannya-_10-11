@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17324d">
+<title>Критерії оцінювання — фізика 10–11 класи</title>
+<style>
+:root{--navy:#17324d;--blue:#2f6f9f;--bg:#f4f7fa;--card:#fff;--border:#d5dee7;--muted:#647586;--danger:#9b3030}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#17232d;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45}
+header{background:var(--navy);color:#fff;padding:22px 0}.wrap{width:min(1160px,calc(100% - 24px));margin:auto}
+h1{font-size:clamp(1.25rem,3vw,1.9rem);margin:0}.sub{opacity:.86;margin-top:7px}
+main{padding:20px 0 40px}.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(330px,.9fr);gap:18px}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:19px;box-shadow:0 7px 22px rgba(20,45,65,.07)}
+h2{font-size:1.1rem;margin:0 0 14px}label{font-weight:700;display:block;margin-bottom:6px}
+select,input{width:100%;padding:11px 12px;border:1px solid #b9c7d3;border-radius:10px;font:inherit;background:#fff}
+.field{margin-bottom:15px}
+.levels{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:15px}
+.level-btn{background:#eef3f7;color:var(--navy);border:1px solid var(--border);padding:9px 5px;border-radius:9px;font-weight:700;cursor:pointer}
+.level-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.option{border:1px solid var(--border);border-radius:11px;padding:13px;margin:9px 0;cursor:pointer;background:#fff}
+.option:hover{border-color:var(--blue)}.option.selected{border:2px solid var(--blue);background:#f2f7fb;padding:12px}
+.badge{display:inline-block;font-weight:800;color:var(--blue);margin-bottom:5px}.option-level{font-size:.82rem;color:var(--muted);margin-bottom:5px}
+.buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+button{border:0;border-radius:10px;padding:11px 14px;font:inherit;font-weight:750;cursor:pointer}
+.primary{background:var(--navy);color:#fff}.secondary{background:#e8eef3;color:var(--navy)}.danger{background:#f8e8e8;color:var(--danger)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.card-area{position:sticky;top:12px}.student-card{background:#fff;border:1px solid #bfcbd5;border-radius:13px;padding:22px}
+.card-head{text-align:center;border-bottom:2px solid var(--navy);padding-bottom:13px;margin-bottom:15px}
+.card-head h3{margin:0;font-size:1.2rem}.card-head div{font-size:.82rem;color:var(--muted);margin-top:4px}
+.student-info{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:15px}
+.info{border-bottom:1px solid #aebbc7;padding:5px 0}.cap{font-size:.75rem;color:var(--muted)}.value{font-weight:700;min-height:22px}
+.result{border-top:1px solid var(--border);padding-top:15px}.result-label{font-size:.8rem;color:var(--muted)}
+.score{font-size:2rem;font-weight:850;color:var(--navy);float:right}
+.descriptor{margin-top:6px;font-size:.94rem}.empty{color:var(--muted);text-align:center;padding:25px 5px}
+.note{font-size:.8rem;color:var(--muted);margin-top:9px}
+footer{font-size:.78rem;color:var(--muted);padding-bottom:25px}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.card-area{position:static}}
+@media(max-width:540px){.wrap{width:min(100% - 14px,1160px)}.panel{padding:14px}.levels{grid-template-columns:repeat(2,1fr)}.student-info{grid-template-columns:1fr}.student-card{padding:17px}}
+@media print{header,.controls,footer,.download-row{display:none!important}main{padding:0}.layout{display:block}.card-area{position:static}.panel{border:0;box-shadow:none;padding:0}.student-card{border:1px solid #999}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Критерії оцінювання результатів навчання учнів з фізики</h1>
+<div class="sub">10–11 класи · за наказом МОН України від 21.08.2013 № 1222 (зі змінами)</div>
+</div></header>
+
+<main><div class="wrap layout">
+<section class="panel controls">
+<h2>1. Виберіть рівень навчальних досягнень</h2>
+<div class="levels" id="levelButtons"></div>
+
+<div class="field">
+<label for="score">2. Виберіть бал</label>
+<select id="score"></select>
+</div>
+
+<div>
+<label>3. Характеристика навчальних досягнень учня (учениці)</label>
+<div id="options"></div>
+</div>
+
+<div class="buttons">
+<button class="primary" id="apply" disabled>Додати до картки</button>
+<button class="danger" id="clear">Очистити</button>
+</div>
+<div class="note">Формулювання характеристики відтворено з наданого документа без додавання пояснювального тексту.</div>
+
+<hr style="border:0;border-top:1px solid var(--border);margin:20px 0">
+
+<h2>Дані учня</h2>
+<div class="student-info">
+<div class="field"><label for="surname">Прізвище</label><input id="surname" autocomplete="family-name" placeholder="Введіть прізвище"></div>
+<div class="field"><label for="name">Ім'я</label><input id="name" autocomplete="given-name" placeholder="Введіть ім'я"></div>
+</div>
+</section>
+
+<section class="panel card-area">
+<div class="student-card" id="studentCard">
+<div class="card-head"><h3>Картка оцінювання</h3><div>Критерії оцінювання результатів навчання учнів з фізики</div></div>
+<div class="student-info">
+<div class="info"><div class="cap">Прізвище</div><div class="value" id="cardSurname">—</div></div>
+<div class="info"><div class="cap">Ім'я</div><div class="value" id="cardName">—</div></div>
+</div>
+<div id="result" class="empty">Оберіть бал та характеристику.</div>
+</div>
+<div class="buttons download-row">
+<button class="primary" id="png" disabled>Завантажити картку PNG</button>
+<button class="secondary" id="print" disabled>Друк / PDF</button>
+</div>
+<div class="note download-row">PNG створюється засобами самого браузера — без зовнішніх бібліотек.</div>
+</section>
+</div></main>
+<footer><div class="wrap">Працює як звичайний статичний сайт і підходить для GitHub Pages.</div></footer>
+
+<script>
+const DATA = [{"score": 1, "level": "Початковий", "text": "Учень володіє навчальним матеріалом на рівні розпізнавання явищ природи та природних об’єктів, за допомогою вчителя відповідає на запитання, що потребують відповіді«так» чи «ні»"}, {"score": 2, "level": "Початковий", "text": "Учень описує природні явища та природні об’єкти на основі свого попереднього досвіду, відповідає на запитання, що потребують однослівної відповіді"}, {"score": 3, "level": "Початковий", "text": "Учень за допомогою вчителя описує явище або його частини без пояснень відповідних причин, називає фізичні явища, розрізняє позначення окремих фізичних величин. За допомогою вчителя проводить найпростіші розрахунки"}, {"score": 4, "level": "Середній", "text": "Учень за допомогою вчителя описує явища, без пояснень наводить приклади, що ґрунтуються на його власних спостереженнях чи матеріалі підручника, розповідях учителя тощо.Проводить найпростіші розрахунки за зразком"}, {"score": 5, "level": "Середній", "text": "Учень описує явища, відтворює значну частину навчального матеріалу, знає одиниці окремих фізичних величин, записує основні формули, рівняння. Проводить найпростіші розрахунки самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка,теплота, електрика)"}, {"score": 6, "level": "Середній", "text": "Учень може зі сторонньою допомогою пояснювати явища, виправляти допущені неточності (власні, інших учнів), виявляє елементарні знання основних положень (законів, понять, формул). Розв’язує задачі на одну дію за зразком. Демонструє вміння вирішувати простіші побутові завдання (механіка,теплота, електрика)"}, {"score": 7, "level": "Достатній", "text": "Учень може пояснювати явища, виправляти допущені неточності, виявляє знання i розуміння основних положень (законів, понять, формул, теорій). Розв’язує задачі на однудві дії самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка,теплота, електрика), демонструє знання про похибки вимірювань"}, {"score": 8, "level": "Достатній", "text": "Учень уміє пояснювати явища, аналізувати, узагальнювати знання, систематизувати їх, зі сторонньою допомогою (вчителя, однокласників тощо) робити висновки. розв’язує задачі на двітри дії самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка,теплота, електрика), демонструє знання про похибки вимірювань"}, {"score": 9, "level": "Достатній", "text": "Учень вільно володіє вивченим матеріалом у стандартних ситуаціях, наводить приклади його практичного застосування та аргументи на підтвердження власних думок. Розв’язує задачі на тричотири дії самостійно"}, {"score": 10, "level": "Високий", "text": "Учень вільно володіє вивченим матеріалом, уміло послуговується науковою термінологією, вміє знаходити та опрацьовувати наукову інформацію (нові факти, описи явищ, ідеї), самостійно використовувати її. Розв’язує задачі на п’ятьшість дій самостійно. Демонструє вміння вирішувати побутові завдання (механіка,теплота, електрика), демонструє знання про похибки"}, {"score": 11, "level": "Високий", "text": "Учень на високому рівні опанував програмовий матеріал, самостійно, у межах чинної програми оцінює різноманітні явища, факти, теорії, використовує здобуті знання i вміння у нестандартних ситуаціях, поглиблює набуті знання. Розв’язує комбіновані задачі, що потребують володіння навчальним матеріалом різних тем з фізики. Демонструє вміння вирішувати побутові завдання (механіка,теплота, електрика), демонструє знання про похибки вимірювань"}, {"score": 12, "level": "Високий", "text": "Учень вільно володіє програмовим матеріалом, виявляє здібності, вміє самостійно поставити мету дослідження (як експериментального, так і теоретичного), вказує шляхи її реалізації, робить аналіз та висновки. Розв’язує комбіновані задачі, що потребують володіння навчальним матеріалом різних тем з фізики. Демонструє вміння вирішувати реальні повсякденні завдання (механіка, теплота, електрика). Демонструє знання про правила безпеки, похибки вимірювань"}];
+const levelGroups = {
+  "Початковий":[1,2,3],
+  "Середній":[4,5,6],
+  "Достатній":[7,8,9],
+  "Високий":[10,11,12]
+};
+let selectedScore = null;
+let saved = null;
+const levelButtons=document.getElementById('levelButtons');
+const score=document.getElementById('score');
+const options=document.getElementById('options');
+const apply=document.getElementById('apply');
+const clear=document.getElementById('clear');
+const surname=document.getElementById('surname');
+const name=document.getElementById('name');
+const cardSurname=document.getElementById('cardSurname');
+const cardName=document.getElementById('cardName');
+const result=document.getElementById('result');
+const png=document.getElementById('png');
+const printBtn=document.getElementById('print');
+
+function renderLevels(active){
+  levelButtons.innerHTML='';
+  Object.entries(levelGroups).forEach(([name,nums])=>{
+    const b=document.createElement('button');
+    b.className='level-btn'+(active===name?' active':'');
+    b.textContent=name;
+    b.onclick=()=>{renderLevels(name); fillScores(nums);};
+    levelButtons.appendChild(b);
+  });
+}
+function fillScores(nums){
+  score.innerHTML='';
+  nums.forEach(n=>{const o=document.createElement('option');o.value=n;o.textContent=n;score.appendChild(o)});
+  renderOptions();
+}
+function renderOptions(){
+  selectedScore=Number(score.value);
+  const item=DATA.find(x=>x.score===selectedScore);
+  options.innerHTML='';
+  if(!item)return;
+  const box=document.createElement('div');
+  box.className='option selected';
+  box.innerHTML='<div class="badge">'+item.score+' бал</div><div class="option-level">'+item.level+' рівень</div><div></div>';
+  box.querySelector('div:last-child').textContent=item.text;
+  box.onclick=()=>{apply.disabled=false};
+  options.appendChild(box);
+  apply.disabled=false;
+}
+function renderCard(){
+  cardSurname.textContent=surname.value.trim()||'—';
+  cardName.textContent=name.value.trim()||'—';
+  if(!saved){
+    result.className='empty'; result.textContent='Оберіть бал та характеристику.';
+    png.disabled=true; printBtn.disabled=true; return;
+  }
+  result.className='result';
+  result.innerHTML='<div class="result-label"></div><div class="score"></div><div class="descriptor"></div>';
+  result.querySelector('.result-label').textContent=saved.level+' рівень навчальних досягнень';
+  result.querySelector('.score').textContent=saved.score;
+  result.querySelector('.descriptor').textContent=saved.text;
+  png.disabled=false; printBtn.disabled=false;
+}
+apply.onclick=()=>{
+  const item=DATA.find(x=>x.score===selectedScore);
+  if(item){saved=item;renderCard();}
+};
+clear.onclick=()=>{saved=null;renderCard();};
+[surname,name].forEach(x=>x.addEventListener('input',renderCard));
+score.addEventListener('change',renderOptions);
+
+function escapeXml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function wrapText(text,maxChars){
+  const words=text.split(/\s+/), lines=[]; let line='';
+  words.forEach(w=>{
+    if((line+' '+w).trim().length>maxChars){if(line)lines.push(line);line=w}else line=(line+' '+w).trim();
+  });
+  if(line)lines.push(line); return lines;
+}
+png.onclick=()=>{
+  if(!saved)return;
+  const s=(surname.value.trim()||'учень').replace(/[^a-zA-Zа-яА-ЯіїєґІЇЄҐ0-9_-]+/g,'_');
+  const n=name.value.trim();
+  const title=escapeXml((surname.value.trim()+' '+n).trim()||'Учень');
+  const desc=wrapText(saved.text,72).map((line,i)=>`<tspan x="70" dy="${i?30:0}">${escapeXml(line)}</tspan>`).join('');
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="white"/>
+  <rect x="35" y="35" width="1130" height="830" rx="18" fill="white" stroke="#17324d" stroke-width="3"/>
+  <text x="600" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#17324d">Картка оцінювання</text>
+  <text x="600" y="130" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#647586">Критерії оцінювання результатів навчання учнів з фізики</text>
+  <line x1="65" y1="155" x2="1135" y2="155" stroke="#17324d" stroke-width="3"/>
+  <text x="70" y="205" font-family="Arial,sans-serif" font-size="18" fill="#647586">Учень (учениця)</text>
+  <text x="70" y="240" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#17232d">${title}</text>
+  <text x="70" y="300" font-family="Arial,sans-serif" font-size="19" fill="#647586">${escapeXml(saved.level)} рівень навчальних досягнень</text>
+  <text x="1100" y="305" text-anchor="end" font-family="Arial,sans-serif" font-size="55" font-weight="700" fill="#17324d">${saved.score}</text>
+  <line x1="65" y1="330" x2="1135" y2="330" stroke="#d5dee7" stroke-width="2"/>
+  <text x="70" y="375" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#17232d">Характеристика навчальних досягнень учня (учениці)</text>
+  <text x="70" y="425" font-family="Arial,sans-serif" font-size="21" fill="#17232d">${desc}</text>
+  </svg>`;
+  const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});
+  const url=URL.createObjectURL(blob); const a=document.createElement('a');
+  a.href=url; a.download=`картка_оцінювання_${s}.svg`; a.click(); URL.revokeObjectURL(url);
+};
+printBtn.onclick=()=>window.print();
+
+renderLevels("Початковий");
+fillScores(levelGroups["Початковий"]);
+renderCard();
+</script>
+</body></html>
