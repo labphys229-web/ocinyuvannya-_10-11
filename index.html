@@ -2,321 +2,309 @@
 <html lang="uk">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#183b63">
-<title>Оцінювання учня — 12 критеріїв</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Самооцінювання з фізики — 12 рівнів</title>
 <style>
-:root {
-  --navy:#183b63;
-  --navy2:#0e2744;
-  --blue:#2d6ea3;
-  --gold:#c9a227;
-  --bg:#f3f6f9;
-  --card:#ffffff;
-  --text:#1f2937;
-  --muted:#687386;
-  --line:#dbe3ec;
-  --shadow:0 10px 30px rgba(20,45,75,.10);
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
-button,input{font:inherit}
-header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px}
-.header-inner{max-width:1180px;margin:auto}
-h1{margin:0 0 4px;font-size:clamp(24px,4vw,34px)}
-.subtitle{opacity:.85}
-main{max-width:1180px;margin:20px auto;padding:0 16px 40px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(310px,.85fr);gap:20px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px}
-.panel h2{margin:0 0 14px;font-size:20px;color:var(--navy)}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.field{display:flex;flex-direction:column;gap:6px}
-.field.full{grid-column:1/-1}
-label{font-weight:700;font-size:14px}
-input{width:100%;border:1px solid #cbd5e1;border-radius:10px;padding:11px 12px;outline:none;background:#fff}
-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(45,110,163,.12)}
-.criteria{display:flex;flex-direction:column;gap:10px}
-.criterion{display:grid;grid-template-columns:42px 1fr;gap:13px;text-align:left;width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px;cursor:pointer;transition:.18s}
-.criterion:hover{border-color:#9eb6cc;transform:translateY(-1px)}
-.criterion.active{border-color:var(--blue);box-shadow:0 0 0 3px rgba(45,110,163,.10);background:#f7fbff}
-.criterion__num{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#edf3f8;color:var(--navy);font-weight:800}
-.criterion__text{color:#263445}
-.helper{margin:0 0 12px;color:var(--muted);font-size:14px}
-.score-panel{display:none;margin-top:10px;padding:14px;border:1px solid #b9cbdb;border-radius:14px;background:#f7fbff}
-.score-panel.show{display:block}
-.score-title{font-weight:800;color:var(--navy);margin-bottom:10px}
-.scores{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}
-.score-btn{border:1px solid #cbd5e1;background:#fff;border-radius:9px;padding:10px 0;font-weight:800;cursor:pointer}
-.score-btn:hover,.score-btn.selected{background:var(--navy);color:#fff;border-color:var(--navy)}
-.current{margin-top:10px;font-size:14px;color:var(--muted)}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.action{border:0;border-radius:10px;padding:11px 15px;font-weight:800;cursor:pointer}
-.primary{background:var(--navy);color:white}
-.secondary{background:#e8eef4;color:var(--navy)}
-.danger{background:#fff0f0;color:#a52828;border:1px solid #f0c6c6}
-.card-preview{position:sticky;top:14px}
-.student-card{border:2px solid var(--navy);border-radius:14px;background:white;padding:18px}
-.card-head{text-align:center;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:12px}
-.card-head h3{margin:0;color:var(--navy);font-size:23px}
-.card-meta{font-size:14px;color:#4b5563;margin-top:5px}
-.entries{display:flex;flex-direction:column;gap:9px}
-.entry{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
-.entry-title{font-weight:700;color:var(--navy)}
-.entry-text{font-size:14px;line-height:1.4;margin-top:3px}
-.grade{min-width:42px;height:42px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font-weight:900;font-size:20px}
-.empty{color:var(--muted);text-align:center;padding:18px 8px}
-.small{font-size:12px;color:var(--muted)}
-@media (max-width:850px){main{grid-template-columns:1fr}.card-preview{position:static}}
-@media (max-width:520px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.scores{grid-template-columns:repeat(4,1fr)}.criterion{padding:12px}}
-@media print {
-  body{background:#fff}
-  header,.criteria-panel,.student-form,.actions,.score-panel,.helper,.screen-only{display:none!important}
-  main{display:block;margin:0;padding:0;max-width:none}
-  .panel{box-shadow:none;border:0;padding:0}
-  .card-preview{position:static}
-  .student-card{border:2px solid #000}
-  .entry{break-inside:avoid}
-}
+:root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#172033;background:#f4f7fb}
+*{box-sizing:border-box} body{margin:0}
+header{background:#172033;color:white;padding:22px 28px}
+header h1{margin:0 0 6px;font-size:25px} header p{margin:0;opacity:.82}
+main{max-width:1150px;margin:24px auto;padding:0 18px}
+.panel{background:white;border:1px solid #dce3ee;border-radius:16px;padding:20px;box-shadow:0 5px 18px #17203312;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+label{font-weight:650;font-size:14px;display:block;margin-bottom:6px}
+input{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px}
+h2{margin:0 0 15px;font-size:19px}
+.instructions{color:#526071;margin:0 0 15px}
+.criteria{display:grid;gap:12px}
+.criterion{appearance:none;border:1px solid #d7dfeb;background:#fff;text-align:left;border-radius:14px;padding:16px 18px;cursor:pointer;transition:.15s;display:block;width:100%}
+.criterion:hover{border-color:#7184a5;transform:translateY(-1px);box-shadow:0 4px 14px #17203310}
+.criterion.selected{border:2px solid #172033;background:#f0f4fa}
+.level{display:block;font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.05em;color:#64748b;margin-bottom:7px}
+.text{display:block;line-height:1.48;font-size:15px}
+.result{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.score{font-size:38px;font-weight:800}
+.muted{color:#64748b}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+button.action{border:0;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer;background:#172033;color:white}
+button.secondary{background:#e8edf5;color:#172033}
+table{width:100%;border-collapse:collapse;margin-top:12px} th,td{padding:10px;border-bottom:1px solid #e3e8f0;text-align:left}
+.small{font-size:13px;color:#64748b}
+@media(max-width:750px){.grid{grid-template-columns:1fr}}
+@media print{header,.actions,.instructions{display:none} body{background:white} .panel{box-shadow:none;border:0} .criteria{display:none}}
 </style>
 </head>
 <body>
-<header>
-  <div class="header-inner">
-    <h1>Оцінювання навчальних досягнень учня</h1>
-    <div class="subtitle">Фізика · 12-рівнева шкала · автономна версія без зовнішніх бібліотек</div>
-  </div>
-</header>
-
+<header><h1>Самооцінювання навчальних досягнень з фізики</h1>
+<p>12 критеріїв • бал визначається автоматично • номер бала прихований у критеріях</p></header>
 <main>
-  <section>
-    <div class="panel student-form">
-      <h2>1. Дані учня</h2>
-      <div class="form-grid">
-        <div class="field"><label for="surname">Прізвище</label><input id="surname" autocomplete="family-name" placeholder="Введіть прізвище"></div>
-        <div class="field"><label for="name">Ім’я</label><input id="name" autocomplete="given-name" placeholder="Введіть ім’я"></div>
-        <div class="field"><label for="className">Клас</label><input id="className" placeholder="Напр., 10-А"></div>
-        <div class="field"><label for="date">Дата</label><input id="date" type="date"></div>
-      </div>
-    </div>
+<section class="panel">
+<h2>Дані учня</h2>
+<div class="grid">
+<div><label for="name">ПІБ учня</label><input id="name" placeholder="Введіть ПІБ"></div>
+<div><label for="class">Клас</label><input id="class" placeholder="Наприклад: 10-А"></div>
+<div><label for="topic">Тема / робота</label><input id="topic" placeholder="За бажанням"></div>
+<div><label for="date">Дата</label><input id="date" type="date"></div>
+</div>
+</section>
 
-    <div class="panel criteria-panel" style="margin-top:20px">
-      <h2>2. 12 критеріїв</h2>
-      <p class="helper">Натисніть на потрібний абзац. Тільки після натискання під ним з’явиться вибір оцінки 1–12.</p>
-      <div class="criteria">
-        
-      <button class="criterion" type="button" data-index="1" aria-label="Критерій 1">
-        <span class="criterion__num">1</span>
-        <span class="criterion__text">Учень володіє навчальним матеріалом на рівні розпізнавання явищ природи та природних об’єктів, за допомогою вчителя відповідає на запитання, що потребують відповіді «так» чи «ні».</span>
-      </button>
-      <button class="criterion" type="button" data-index="2" aria-label="Критерій 2">
-        <span class="criterion__num">2</span>
-        <span class="criterion__text">Учень описує природні явища та природні об’єкти на основі свого попереднього досвіду, відповідає на запитання, що потребують однослівної відповіді.</span>
-      </button>
-      <button class="criterion" type="button" data-index="3" aria-label="Критерій 3">
-        <span class="criterion__num">3</span>
-        <span class="criterion__text">Учень за допомогою вчителя описує явище або його частини без пояснень відповідних причин, називає фізичні явища, розрізняє позначення окремих фізичних величин. За допомогою вчителя проводить найпростіші розрахунки.</span>
-      </button>
-      <button class="criterion" type="button" data-index="4" aria-label="Критерій 4">
-        <span class="criterion__num">4</span>
-        <span class="criterion__text">Учень за допомогою вчителя описує явища, без пояснень наводить приклади, що ґрунтуються на його власних спостереженнях чи матеріалі підручника, розповідях учителя тощо. Проводить найпростіші розрахунки за зразком.</span>
-      </button>
-      <button class="criterion" type="button" data-index="5" aria-label="Критерій 5">
-        <span class="criterion__num">5</span>
-        <span class="criterion__text">Учень описує явища, відтворює значну частину навчального матеріалу, знає одиниці окремих фізичних величин, записує основні формули, рівняння. Проводить найпростіші розрахунки самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика).</span>
-      </button>
-      <button class="criterion" type="button" data-index="6" aria-label="Критерій 6">
-        <span class="criterion__num">6</span>
-        <span class="criterion__text">Учень може зі сторонньою допомогою пояснювати явища, виправляти допущені неточності (власні, інших учнів), виявляє елементарні знання основних положень (законів, понять, формул). Розв’язує задачі на одну дію за зразком. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика).</span>
-      </button>
-      <button class="criterion" type="button" data-index="7" aria-label="Критерій 7">
-        <span class="criterion__num">7</span>
-        <span class="criterion__text">Учень може пояснювати явища, виправляти допущені неточності, виявляє знання і розуміння основних положень (законів, понять, формул, теорій). Розв’язує задачі на одну-дві дії самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.</span>
-      </button>
-      <button class="criterion" type="button" data-index="8" aria-label="Критерій 8">
-        <span class="criterion__num">8</span>
-        <span class="criterion__text">Учень уміє пояснювати явища, аналізувати, узагальнювати знання, систематизувати їх, зі сторонньою допомогою (вчителя, однокласників тощо) робити висновки. Розв’язує задачі на дві-три дії самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.</span>
-      </button>
-      <button class="criterion" type="button" data-index="9" aria-label="Критерій 9">
-        <span class="criterion__num">9</span>
-        <span class="criterion__text">Учень вільно володіє вивченим матеріалом у стандартних ситуаціях, наводить приклади його практичного застосування та аргументи на підтвердження власних думок. Розв’язує задачі на три-чотири дії самостійно.</span>
-      </button>
-      <button class="criterion" type="button" data-index="10" aria-label="Критерій 10">
-        <span class="criterion__num">10</span>
-        <span class="criterion__text">Учень вільно володіє вивченим матеріалом, уміло послуговується науковою термінологією, вміє знаходити та опрацьовувати наукову інформацію (нові факти, описи явищ, ідеї), самостійно використовувати її. Розв’язує задачі на п’ять-шість дій самостійно. Демонструє вміння вирішувати побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.</span>
-      </button>
-      <button class="criterion" type="button" data-index="11" aria-label="Критерій 11">
-        <span class="criterion__num">11</span>
-        <span class="criterion__text">Учень на високому рівні опанував програмовий матеріал, самостійно, у межах чинної програми оцінює різноманітні явища, факти, теорії, використовує здобуті знання і вміння у нестандартних ситуаціях, поглиблює набуті знання. Розв’язує комбіновані задачі, що потребують володіння навчальним матеріалом різних тем з фізики. Демонструє вміння вирішувати побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.</span>
-      </button>
-      <button class="criterion" type="button" data-index="12" aria-label="Критерій 12">
-        <span class="criterion__num">12</span>
-        <span class="criterion__text">Учень вільно володіє програмовим матеріалом, виявляє здібності, вміє самостійно поставити мету дослідження (як експериментального, так і теоретичного), вказує шляхи її реалізації, робить аналіз та висновки. Розв’язує комбіновані задачі, що потребують володіння навчальним матеріалом різних тем з фізики. Демонструє вміння вирішувати реальні повсякденні завдання (механіка, теплота, електрика). Демонструє знання про правила безпеки, похибки вимірювань.</span>
-      </button>
-      </div>
+<section class="panel">
+<h2>Оберіть критерій, який найточніше описує ваш рівень</h2>
+<p class="instructions">Натисніть один абзац. Оцінка визначиться автоматично. У тексті критеріїв номер оцінки не показується.</p>
+<div class="criteria"><button class="criterion" data-score="1" onclick="selectCriterion(this)"
+      <span class="text">Учень володіє навчальним матеріалом на рівні розпізнавання явищ природи та природних об’єктів, за допомогою вчителя відповідає на запитання, що потребують відповіді «так» чи «ні».</span>
+    </button><button class="criterion" data-score="2" onclick="selectCriterion(this)">
+      <span class="text">Учень описує природні явища та природні об’єкти на основі свого попереднього досвіду, відповідає на запитання, що потребують однослівної відповіді.</span>
+    </button><button class="criterion" data-score="3" onclick="selectCriterion(this)">
+      <span class="text">Учень за допомогою вчителя описує явище або його частини без пояснень відповідних причин, називає фізичні явища, розрізняє позначення окремих фізичних величин. За допомогою вчителя проводить найпростіші розрахунки.</span>
+    </button><button class="criterion" data-score="4" onclick="selectCriterion(this)">
+      <span class="text">Учень за допомогою вчителя описує явища, без пояснень наводить приклади, що ґрунтуються на його власних спостереженнях чи матеріалі підручника, розповідях учителя тощо. Проводить найпростіші розрахунки за зразком.</span>
+    </button><button class="criterion" data-score="5" onclick="selectCriterion(this)">
+      <span class="text">Учень описує явища, відтворює значну частину навчального матеріалу, знає одиниці окремих фізичних величин, записує основні формули, рівняння. Проводить найпростіші розрахунки самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика).</span>
+    </button><button class="criterion" data-score="6" onclick="selectCriterion(this)">
+      <span class="text">Учень може зі сторонньою допомогою пояснювати явища, виправляти допущені неточності (власні, інших учнів), виявляє елементарні знання основних положень (законів, понять, формул). Розв’язує задачі на одну дію за зразком. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика).</span>
+    </button><button class="criterion" data-score="7" onclick="selectCriterion(this)">
+      <span class="text">Учень може пояснювати явища, виправляти допущені неточності, виявляє знання і розуміння основних положень (законів, понять, формул, теорій). Розв’язує задачі на одну-дві дії самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.</span>
+    </button><button class="criterion" data-score="8" onclick="selectCriterion(this)">
+      <span class="text">Учень уміє пояснювати явища, аналізувати, узагальнювати знання, систематизувати їх, зі сторонньою допомогою (вчителя, однокласників тощо) робити висновки. Розв’язує задачі на дві-три дії самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.</span>
+    </button><button class="criterion" data-score="9" onclick="selectCriterion(this)"<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Самооцінювання з фізики — 12 рівнів</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#172033;background:#f4f7fb}
+*{box-sizing:border-box} body{margin:0}
+header{background:#172033;color:white;padding:22px 28px}
+header h1{margin:0 0 6px;font-size:25px} header p{margin:0;opacity:.82}
+main{max-width:1150px;margin:24px auto;padding:0 18px}
+.panel{background:white;border:1px solid #dce3ee;border-radius:16px;padding:20px;box-shadow:0 5px 18px #17203312;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+label{font-weight:650;font-size:14px;display:block;margin-bottom:6px}
+input{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px}
+h2{margin:0 0 15px;font-size:19px}
+.instructions{color:#526071;margin:0 0 15px}
+.criteria{display:grid;gap:12px}
+.criterion{appearance:none;border:1px solid #d7dfeb;background:#fff;text-align:left;border-radius:14px;padding:16px 18px;cursor:pointer;transition:.15s;display:block;width:100%}
+.criterion:hover{border-color:#7184a5;transform:translateY(-1px);box-shadow:0 4px 14px #17203310}
+.criterion.selected{border:2px solid #172033;background:#f0f4fa}
+.level{display:block;font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.05em;color:#64748b;margin-bottom:7px}
+.text{display:block;line-height:1.48;font-size:15px}
+.result{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.score{font-size:38px;font-weight:800}
+.muted{color:#64748b}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+button.action{border:0;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer;background:#172033;color:white}
+button.secondary{background:#e8edf5;color:#172033}
+table{width:100%;border-collapse:collapse;margin-top:12px} th,td{padding:10px;border-bottom:1px solid #e3e8f0;text-align:left}
+.small{font-size:13px;color:#64748b}
+@media(max-width:750px){.grid{grid-template-columns:1fr}}
+@media print{header,.actions,.instructions{display:none} body{background:white} .panel{box-shadow:none;border:0} .criteria{display:none}}
+</style>
+</head>
+<body>
+<header><h1>Самооцінювання навчальних досягнень з фізики</h1>
+<p>12 критеріїв • бал визначається автоматично • номер бала прихований у критеріях</p></header>
+<main>
+<section class="panel">
+<h2>Дані учня</h2>
+<div class="grid">
+<div><label for="name">ПІБ учня</label><input id="name" placeholder="Введіть ПІБ"></div>
+<div><label for="class">Клас</label><input id="class" placeholder="Наприклад: 10-А"></div>
+<div><label for="topic">Тема / робота</label><input id="topic" placeholder="За бажанням"></div>
+<div><label for="date">Дата</label><input id="date" type="date"></div>
+</div>
+</section>
 
-      <div id="scorePanel" class="score-panel" aria-live="polite">
-        <div id="scoreTitle" class="score-title"></div>
-        <div class="scores" id="scores"></div>
-        <div class="current" id="currentInfo">Оцінку ще не вибрано.</div>
-      </div>
+<section class="panel">
+<h2>Оберіть критерій, який найточніше описує ваш рівень</h2>
+<p class="instructions">Натисніть один абзац. Оцінка визначиться автоматично. У тексті критеріїв номер оцінки не показується.</p>
+<div class="criteria"><button class="criterion" data-score="1" onclick="selectCriterion(this)">
+      <span class="text">Учень володіє навчальним матеріалом на рівні розпізнавання явищ природи та природних об’єктів, за допомогою вчителя відповідає на запитання, що потребують відповіді «так» чи «ні».</span>
+    </button><button class="criterion" data-score="2" onclick="selectCriterion(this)">
+      <span class="text">Учень описує природні явища та природні об’єкти на основі свого попереднього досвіду, відповідає на запитання, що потребують однослівної відповіді.</span>
+    </button><button class="criterion" data-score="3" onclick="selectCriterion(this)">
+      <span class="text">Учень за допомогою вчителя описує явище або його частини без пояснень відповідних причин, називає фізичні явища, розрізняє позначення окремих фізичних величин. За допомогою вчителя проводить найпростіші розрахунки.</span>
+    </button><button class="criterion" data-score="4" onclick="selectCriterion(this)">
+      <span class="text">Учень за допомогою вчителя описує явища, без пояснень наводить приклади, що ґрунтуються на його власних спостереженнях чи матеріалі підручника, розповідях учителя тощо. Проводить найпростіші розрахунки за зразком.</span>
+    </button><button class="criterion" data-score="5" onclick="selectCriterion(this)">
+      <span class="text">Учень описує явища, відтворює значну частину навчального матеріалу, знає одиниці окремих фізичних величин, записує основні формули, рівняння. Проводить найпростіші розрахунки самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика).</span>
+    </button><button class="criterion" data-score="6" onclick="selectCriterion(this)">
+      <span class="text">Учень може зі сторонньою допомогою пояснювати явища, виправляти допущені неточності (власні, інших учнів), виявляє елементарні знання основних положень (законів, понять, формул). Розв’язує задачі на одну дію за зразком. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика).</span>
+    </button><button class="criterion" data-score="7" onclick="selectCriterion(this)">
+      <span class="text">Учень може пояснювати явища, виправляти допущені неточності, виявляє знання і розуміння основних положень (законів, понять, формул, теорій). Розв’язує задачі на одну-дві дії самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.</span>
+    </button><button class="criterion" data-score="8" onclick="selectCriterion(this)">
+      <span class="text">Учень уміє пояснювати явища, аналізувати, узагальнювати знання, систематизувати їх, зі сторонньою допомогою (вчителя, однокласників тощо) робити висновки. Розв’язує задачі на дві-три дії самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.</span>
+    </button><button class="criterion" data-score="9" onclick="selectCriterion(this)">
+      <span class="text">Учень вільно володіє вивченим матеріалом у стандартних ситуаціях, наводить приклади його практичного застосування та аргументи на підтвердження власних думок. Розв’язує задачі на три-чотири дії самостійно.</span>
+    </button><button class="criterion" data-score="10" onclick="selectCriterion(this)">
+      <span class="text">Учень вільно володіє вивченим матеріалом, уміло послуговується науковою термінологією, вміє знаходити та опрацьовувати наукову інформацію (нові факти, описи явищ, ідеї), самостійно використовувати її. Розв’язує задачі на п’ять-шість дій самостійно. Демонструє вміння вирішувати побутові завдання (механіка, теплота, електрика), демонструє знання про похибки.</span>
+    </button><button class="criterion" data-score="11" onclick="selectCriterion(this)">
+      <span class="text">Учень на високому рівні опанував програмовий матеріал, самостійно, у межах чинної програми оцінює різноманітні явища, факти, теорії, використовує здобуті знання і вміння у нестандартних ситуаціях, поглиблює набуті знання. Розв’язує комбіновані задачі, що потребують володіння навчальним матеріалом різних тем з фізики. Демонструє вміння вирішувати побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.</span>
+    </button><button class="criterion" data-score="12" onclick="selectCriterion(this)">
+      <span class="text">Учень вільно володіє програмовим матеріалом, виявляє здібності, вміє самостійно поставити мету дослідження (як експериментального, так і теоретичного), вказує шляхи її реалізації, робить аналіз та висновки. Розв’язує комбіновані задачі, що потребують володіння навчальним матеріалом різних тем з фізики. Демонструє вміння вирішувати реальні повсякденні завдання (механіка, теплота, електрика). Демонструє знання про правила безпеки, похибки вимірювань.</span>
+    </button></div>
+</section>
 
-      <div class="actions">
-        <button class="action secondary" id="clearSelection" type="button">Скасувати вибір</button>
-        <button class="action danger" id="clearAll" type="button">Очистити все</button>
-      </div>
-    </div>
-  </section>
+<section class="panel" id="resultPanel">
+<h2>Картка учня</h2>
+<div class="result">
+<div><div class="muted">Поточний результат</div><div class="score" id="score">—</div></div>
+<div><div class="muted">Обраний рівень</div><div id="level">Критерій ще не обрано</div></div>
+</div>
+<div class="actions" style="margin-top:15px">
+<button class="action" onclick="saveResult()">Зберегти результат</button>
+<button class="action secondary" onclick="clearCurrent()">Очистити вибір</button>
+<button class="action secondary" onclick="window.print()">Друкувати картку</button>
+</div>
+</section>
 
-  <aside class="panel card-preview">
-    <h2>3. Картка учня</h2>
-    <div class="student-card" id="studentCard">
-      <div class="card-head">
-        <h3 id="cardName">Учень / учениця</h3>
-        <div class="card-meta" id="cardMeta">Заповніть дані учня</div>
-      </div>
-      <div id="entries" class="entries">
-        <div class="empty">Тут з’являтимуться обрані критерії та оцінки.</div>
-      </div>
-    </div>
-
-    <div class="actions screen-only">
-      <button class="action primary" id="printBtn" type="button">Друкувати / PDF</button>
-      <button class="action secondary" id="saveBtn" type="button">Зберегти HTML-картку</button>
-    </div>
-    <div class="small screen-only">Кнопка «Друкувати / PDF» використовує стандартне вікно друку браузера — на смартфоні доступне системне збереження/друк.</div>
-  </aside>
+<section class="panel">
+<h2>Збережені результати</h2>
+<div class="actions">
+<button class="action" onclick="exportCSV()">Експорт у CSV</button>
+<button class="action secondary" onclick="clearHistory()">Очистити історію</button>
+</div>
+<div id="history"></div>
+</section>
 </main>
 
 <script>
-const criteria = ['Учень володіє навчальним матеріалом на рівні розпізнавання явищ природи та природних об’єктів, за допомогою вчителя відповідає на запитання, що потребують відповіді «так» чи «ні».','Учень описує природні явища та природні об’єкти на основі свого попереднього досвіду, відповідає на запитання, що потребують однослівної відповіді.','Учень за допомогою вчителя описує явище або його частини без пояснень відповідних причин, називає фізичні явища, розрізняє позначення окремих фізичних величин. За допомогою вчителя проводить найпростіші розрахунки.','Учень за допомогою вчителя описує явища, без пояснень наводить приклади, що ґрунтуються на його власних спостереженнях чи матеріалі підручника, розповідях учителя тощо. Проводить найпростіші розрахунки за зразком.','Учень описує явища, відтворює значну частину навчального матеріалу, знає одиниці окремих фізичних величин, записує основні формули, рівняння. Проводить найпростіші розрахунки самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика).','Учень може зі сторонньою допомогою пояснювати явища, виправляти допущені неточності (власні, інших учнів), виявляє елементарні знання основних положень (законів, понять, формул). Розв’язує задачі на одну дію за зразком. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика).','Учень може пояснювати явища, виправляти допущені неточності, виявляє знання і розуміння основних положень (законів, понять, формул, теорій). Розв’язує задачі на одну-дві дії самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.','Учень уміє пояснювати явища, аналізувати, узагальнювати знання, систематизувати їх, зі сторонньою допомогою (вчителя, однокласників тощо) робити висновки. Розв’язує задачі на дві-три дії самостійно. Демонструє вміння вирішувати простіші побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.','Учень вільно володіє вивченим матеріалом у стандартних ситуаціях, наводить приклади його практичного застосування та аргументи на підтвердження власних думок. Розв’язує задачі на три-чотири дії самостійно.','Учень вільно володіє вивченим матеріалом, уміло послуговується науковою термінологією, вміє знаходити та опрацьовувати наукову інформацію (нові факти, описи явищ, ідеї), самостійно використовувати її. Розв’язує задачі на п’ять-шість дій самостійно. Демонструє вміння вирішувати побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.','Учень на високому рівні опанував програмовий матеріал, самостійно, у межах чинної програми оцінює різноманітні явища, факти, теорії, використовує здобуті знання і вміння у нестандартних ситуаціях, поглиблює набуті знання. Розв’язує комбіновані задачі, що потребують володіння навчальним матеріалом різних тем з фізики. Демонструє вміння вирішувати побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.','Учень вільно володіє програмовим матеріалом, виявляє здібності, вміє самостійно поставити мету дослідження (як експериментального, так і теоретичного), вказує шляхи її реалізації, робить аналіз та висновки. Розв’язує комбіновані задачі, що потребують володіння навчальним матеріалом різних тем з фізики. Демонструє вміння вирішувати реальні повсякденні завдання (механіка, теплота, електрика). Демонструє знання про правила безпеки, похибки вимірювань.'];
-const state = { selectedIndex: null, selections: [] };
+document.getElementById('date').value = new Date().toISOString().slice(0,10);
+let selectedScore = null;
 
-const byId = id => document.getElementById(id);
-const criteriaButtons = [...document.querySelectorAll('.criterion')];
-const scorePanel = byId('scorePanel');
-const scoreTitle = byId('scoreTitle');
-const scores = byId('scores');
-const currentInfo = byId('currentInfo');
-
-function studentData() {
-  return {
-    surname: byId('surname').value.trim(),
-    name: byId('name').value.trim(),
-    className: byId('className').value.trim(),
-    date: byId('date').value
-  };
+function selectCriterion(el) {
+  document.querySelectorAll('.criterion').forEach(x=>x.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedScore = Number(el.dataset.score);
+  document.getElementById('score').textContent = selectedScore;
+  document.getElementById('level').textContent = el.querySelector('.level').textContent;
+  document.getElementById('resultPanel').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function formatDate(value) {
-  if (!value) return '';
-  const d = new Date(value + 'T00:00:00');
-  return d.toLocaleDateString('uk-UA');
+function saveResult() {
+  const name=document.getElementById('name').value.trim();
+  if(!name || !selectedScore) { alert('Спочатку введіть ПІБ учня та оберіть критерій.'); return; }
+  const item={name, className:document.getElementById('class').value.trim(), topic:document.getElementById('topic').value.trim(), date:document.getElementById('date').value, score:selectedScore};
+  const history=JSON.parse(localStorage.getItem('physicsSelfAssessment')||'[]');
+  history.push(item);
+  localStorage.setItem('physicsSelfAssessment',JSON.stringify(history));
+  renderHistory();
+  alert('Результат збережено в картку учня.');
 }
 
-function renderScores() {
-  scores.innerHTML = '';
-  for (let n = 1; n <= 12; n++) {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'score-btn';
-    b.textContent = n;
-    const saved = state.selections.find(x => x.index === state.selectedIndex);
-    if (saved && saved.grade === n) b.classList.add('selected');
-    b.addEventListener('click', () => chooseScore(n));
-    scores.appendChild(b);
-  }
+function clearCurrent() {
+  selectedScore=null;
+  document.querySelectorAll('.criterion').forEach(x=>x.classList.remove('selected'));
+  document.getElementById('score').textContent='—';
+  document.getElementById('level').textContent='Критерій ще не обрано';
 }
 
-function openCriterion(index) {
-  state.selectedIndex = index;
-  criteriaButtons.forEach(btn => btn.classList.toggle('active', Number(btn.dataset.index) === index));
-  scorePanel.classList.add('show');
-  scoreTitle.textContent = 'Оцінка для критерію ' + index;
-  const saved = state.selections.find(x => x.index === index);
-  currentInfo.textContent = saved
-    ? 'Поточна оцінка: ' + saved.grade
-    : 'Оцінку ще не вибрано.';
-  renderScores();
-  scorePanel.scrollIntoView({ behavior:'smooth', block:'nearest' });
+function renderHistory() {
+  const h=JSON.parse(localStorage.getItem('physicsSelfAssessment')||'[]');
+  if(!h.length) {document.getElementById('history').innerHTML='<p class="small">Збережених результатів поки немає.</p>';return;}
+  let rows=h.map((x,i)=>`<tr><td>${i+1}</td><td>${escapeHtml(x.name)}</td><td>${escapeHtml(x.className)}</td><td>${escapeHtml(x.topic)}</td><td>${x.date}</td><td><b>${x.score}</b></td></tr>`).join('');
+  document.getElementById('history').innerHTML=`<table><thead><tr><th>№</th><th>ПІБ</th><th>Клас</th><th>Тема</th><th>Дата</th><th>Бал</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
-function chooseScore(grade) {
-  const existing = state.selections.find(x => x.index === state.selectedIndex);
-  if (existing) existing.grade = grade;
-  else state.selections.push({ index: state.selectedIndex, grade });
-  state.selections.sort((a,b) => a.index - b.index);
-  currentInfo.textContent = 'Оцінка вибрана: ' + grade;
-  renderScores();
-  renderCard();
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function clearHistory(){if(confirm('Очистити всі збережені результати?')){localStorage.removeItem('physicsSelfAssessment');renderHistory();}}
+function exportCSV(){
+ const h=JSON.parse(localStorage.getItem('physicsSelfAssessment')||'[]');
+ if(!h.length){alert('Немає даних для експорту.');return;}
+ const lines=[['ПІБ','Клас','Тема','Дата','Бал'],...h.map(x=>[x.name,x.className,x.topic,x.date,x.score])];
+ const csv='\ufeff'+lines.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(';')).join('\n');
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='rezultaty_samoociniuvannia.csv';a.click();URL.revokeObjectURL(a.href);
+}
+renderHistory();
+</script>
+</body>
+</html>
+      <span class="text">Учень вільно володіє вивченим матеріалом у стандартних ситуаціях, наводить приклади його практичного застосування та аргументи на підтвердження власних думок. Розв’язує задачі на три-чотири дії самостійно.</span>
+    </button><button class="criterion" data-score="10" onclick="selectCriterion(this)">
+      <span class="level">Високий</span>
+      <span class="text">Учень вільно володіє вивченим матеріалом, уміло послуговується науковою термінологією, вміє знаходити та опрацьовувати наукову інформацію (нові факти, описи явищ, ідеї), самостійно використовувати її. Розв’язує задачі на п’ять-шість дій самостійно. Демонструє вміння вирішувати побутові завдання (механіка, теплота, електрика), демонструє знання про похибки.</span>
+    </button><button class="criterion" data-score="11" onclick="selectCriterion(this)">
+      <span class="level">Високий</span>
+      <span class="text">Учень на високому рівні опанував програмовий матеріал, самостійно, у межах чинної програми оцінює різноманітні явища, факти, теорії, використовує здобуті знання і вміння у нестандартних ситуаціях, поглиблює набуті знання. Розв’язує комбіновані задачі, що потребують володіння навчальним матеріалом різних тем з фізики. Демонструє вміння вирішувати побутові завдання (механіка, теплота, електрика), демонструє знання про похибки вимірювань.</span>
+    </button><button class="criterion" data-score="12" onclick="selectCriterion(this)">
+      <span class="level">Високий</span>
+      <span class="text">Учень вільно володіє програмовим матеріалом, виявляє здібності, вміє самостійно поставити мету дослідження (як експериментального, так і теоретичного), вказує шляхи її реалізації, робить аналіз та висновки. Розв’язує комбіновані задачі, що потребують володіння навчальним матеріалом різних тем з фізики. Демонструє вміння вирішувати реальні повсякденні завдання (механіка, теплота, електрика). Демонструє знання про правила безпеки, похибки вимірювань.</span>
+    </button></div>
+</section>
+
+<section class="panel" id="resultPanel">
+<h2>Картка учня</h2>
+<div class="result">
+<div><div class="muted">Поточний результат</div><div class="score" id="score">—</div></div>
+<div><div class="muted">Обраний рівень</div><div id="level">Критерій ще не обрано</div></div>
+</div>
+<div class="actions" style="margin-top:15px">
+<button class="action" onclick="saveResult()">Зберегти результат</button>
+<button class="action secondary" onclick="clearCurrent()">Очистити вибір</button>
+<button class="action secondary" onclick="window.print()">Друкувати картку</button>
+</div>
+</section>
+
+<section class="panel">
+<h2>Збережені результати</h2>
+<div class="actions">
+<button class="action" onclick="exportCSV()">Експорт у CSV</button>
+<button class="action secondary" onclick="clearHistory()">Очистити історію</button>
+</div>
+<div id="history"></div>
+</section>
+</main>
+
+<script>
+document.getElementById('date').value = new Date().toISOString().slice(0,10);
+let selectedScore = null;
+
+function selectCriterion(el) {
+  document.querySelectorAll('.criterion').forEach(x=>x.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedScore = Number(el.dataset.score);
+  document.getElementById('score').textContent = selectedScore;
+  document.getElementById('level').textContent = el.querySelector('.level').textContent;
+  document.getElementById('resultPanel').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function renderCard() {
-  const s = studentData();
-  const fullName = [s.surname, s.name].filter(Boolean).join(' ');
-  byId('cardName').textContent = fullName || 'Учень / учениця';
-  const meta = [s.className ? 'Клас: ' + s.className : '', s.date ? 'Дата: ' + formatDate(s.date) : ''].filter(Boolean).join(' · ');
-  byId('cardMeta').textContent = meta || 'Заповніть дані учня';
-
-  const entries = byId('entries');
-  if (!state.selections.length) {
-    entries.innerHTML = '<div class="empty">Тут з’являтимуться обрані критерії та оцінки.</div>';
-    return;
-  }
-  entries.innerHTML = state.selections.map(x => `
-    <div class="entry">
-      <div>
-        <div class="entry-title">Критерій ${x.index}</div>
-        <div class="entry-text">${criteria[x.index - 1]}</div>
-      </div>
-      <div class="grade">${x.grade}</div>
-    </div>`).join('');
+function saveResult() {
+  const name=document.getElementById('name').value.trim();
+  if(!name || !selectedScore) { alert('Спочатку введіть ПІБ учня та оберіть критерій.'); return; }
+  const item={name, className:document.getElementById('class').value.trim(), topic:document.getElementById('topic').value.trim(), date:document.getElementById('date').value, score:selectedScore};
+  const history=JSON.parse(localStorage.getItem('physicsSelfAssessment')||'[]');
+  history.push(item);
+  localStorage.setItem('physicsSelfAssessment',JSON.stringify(history));
+  renderHistory();
+  alert('Результат збережено в картку учня.');
 }
 
-criteriaButtons.forEach(btn => btn.addEventListener('click', () => openCriterion(Number(btn.dataset.index))));
-['surname','name','className','date'].forEach(id => byId(id).addEventListener('input', renderCard));
+function clearCurrent() {
+  selectedScore=null;
+  document.querySelectorAll('.criterion').forEach(x=>x.classList.remove('selected'));
+  document.getElementById('score').textContent='—';
+  document.getElementById('level').textContent='Критерій ще не обрано';
+}
 
-byId('clearSelection').addEventListener('click', () => {
-  if (state.selectedIndex == null) return;
-  state.selections = state.selections.filter(x => x.index !== state.selectedIndex);
-  currentInfo.textContent = 'Вибір для цього критерію скасовано.';
-  renderScores();
-  renderCard();
-});
+function renderHistory() {
+  const h=JSON.parse(localStorage.getItem('physicsSelfAssessment')||'[]');
+  if(!h.length) {document.getElementById('history').innerHTML='<p class="small">Збережених результатів поки немає.</p>';return;}
+  let rows=h.map((x,i)=>`<tr><td>${i+1}</td><td>${escapeHtml(x.name)}</td><td>${escapeHtml(x.className)}</td><td>${escapeHtml(x.topic)}</td><td>${x.date}</td><td><b>${x.score}</b></td></tr>`).join('');
+  document.getElementById('history').innerHTML=`<table><thead><tr><th>№</th><th>ПІБ</th><th>Клас</th><th>Тема</th><th>Дата</th><th>Бал</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
 
-byId('clearAll').addEventListener('click', () => {
-  state.selectedIndex = null;
-  state.selections = [];
-  criteriaButtons.forEach(btn => btn.classList.remove('active'));
-  scorePanel.classList.remove('show');
-  renderCard();
-});
-
-byId('printBtn').addEventListener('click', () => window.print());
-
-byId('saveBtn').addEventListener('click', () => {
-  const clone = document.documentElement.cloneNode(true);
-  const vals = {
-    surname: byId('surname').value,
-    name: byId('name').value,
-    className: byId('className').value,
-    date: byId('date').value
-  };
-  ['surname','name','className','date'].forEach(id => {
-    const i = clone.querySelector('#' + id);
-    if (i) i.setAttribute('value', vals[id]);
-  });
-  const saveStateScript = clone.querySelector('script:last-of-type');
-  const blob = new Blob(['<!doctype html>\n' + clone.outerHTML], {type:'text/html;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  const base = [vals.surname, vals.name].filter(Boolean).join('_') || 'kartka_uchnia';
-  a.download = base.replace(/[^а-яА-ЯіІїЇєЄґҐ0-9_-]+/g,'_') + '.html';
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-});
-
-const today = new Date();
-byId('date').value = today.toISOString().slice(0,10);
-renderCard();
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function clearHistory(){if(confirm('Очистити всі збережені результати?')){localStorage.removeItem('physicsSelfAssessment');renderHistory();}}
+function exportCSV(){
+ const h=JSON.parse(localStorage.getItem('physicsSelfAssessment')||'[]');
+ if(!h.length){alert('Немає даних для експорту.');return;}
+ const lines=[['ПІБ','Клас','Тема','Дата','Бал'],...h.map(x=>[x.name,x.className,x.topic,x.date,x.score])];
+ const csv='\ufeff'+lines.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(';')).join('\n');
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='rezultaty_samoociniuvannia.csv';a.click();URL.revokeObjectURL(a.href);
+}
+renderHistory();
 </script>
 </body>
 </html>
